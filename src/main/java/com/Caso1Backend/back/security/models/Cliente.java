@@ -43,6 +43,9 @@ public class Cliente {
         this.usuario = usuario;
     }
 
+    public Cliente() {
+    }
+
     public int getId_cliente() {
         return id_cliente;
     }
