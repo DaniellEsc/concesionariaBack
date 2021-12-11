@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -19,6 +21,8 @@ public class FacturaCabecera {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_factura;
     private String tipo;
+
+    @Temporal(TemporalType.DATE)
     private Date fecha;
 
     @ManyToOne

@@ -21,5 +21,10 @@ public class FacturaCuerpoService {
     public <S extends FacturaCuerpo> S save(S entity) {
         return facturaCuerpoRepository.save(entity);
     }
+
+    public FacturaCuerpo registrar(FacturaCuerpo facturaCuerpo){
+        return facturaCuerpoRepository.save(facturaCuerpo);
+    }
+    
     
 }

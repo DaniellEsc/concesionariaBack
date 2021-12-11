@@ -36,4 +36,9 @@ public class FacturaCabeceraController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
+
+    @PostMapping("guardar/")
+    public FacturaCabecera guardar(@RequestBody FacturaCabecera facturaCabecera){
+        return facturaCabeceraService.registrar(facturaCabecera);
+    }
 }

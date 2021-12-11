@@ -21,4 +21,8 @@ public class FacturaCabeceraService {
     public <S extends FacturaCabecera> S save(S entity) {
         return facturaCabeceraRepository.save(entity);
     }
+
+    public FacturaCabecera registrar(FacturaCabecera facturaCabecera){
+        return facturaCabeceraRepository.save(facturaCabecera);
+    }
 }

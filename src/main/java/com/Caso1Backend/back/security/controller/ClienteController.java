@@ -10,6 +10,7 @@ import com.Caso1Backend.back.security.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,4 +52,11 @@ public class ClienteController {
         c.setId_cliente(id);
         return clienteService.editCliente(c);
     }
+
+    @DeleteMapping(value = "delete/{id}")
+    private ResponseEntity<Boolean> deleteCliente(@PathVariable("id")int id){
+        clienteService.deleteById(id);
+        return ResponseEntity.ok(!(clienteService.getOneCliente(id)!=null));
+    }
+
 }

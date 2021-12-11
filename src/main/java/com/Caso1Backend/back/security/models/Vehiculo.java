@@ -42,6 +42,11 @@ public class Vehiculo {
         this.stock = stock;
         this.garantia = garantia;
     }
+    
+
+    public Vehiculo() {
+    }
+
 
     public String getPlaca() {
         return placa;

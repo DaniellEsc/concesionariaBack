@@ -36,4 +36,9 @@ public class FacturaCuerpoController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
+
+    @PostMapping("guardar/")
+    public FacturaCuerpo guardar(@RequestBody FacturaCuerpo facturaCuerpo){
+        return facturaCuerpoService.registrar(facturaCuerpo);
+    }
 }
