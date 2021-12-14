@@ -12,7 +12,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 @Entity
 @Table(name = "factura_cabecera")
 public class FacturaCabecera {
@@ -24,6 +23,7 @@ public class FacturaCabecera {
 
     @Temporal(TemporalType.DATE)
     private Date fecha;
+    
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")
@@ -32,7 +32,8 @@ public class FacturaCabecera {
     public FacturaCabecera() {
     }
 
-    public FacturaCabecera(String tipo, Date fecha, Cliente cliente) {
+    public FacturaCabecera(int id_factura, String tipo, Date fecha, Cliente cliente) {
+        this.id_factura = id_factura;
         this.tipo = tipo;
         this.fecha = fecha;
         this.cliente = cliente;
@@ -71,5 +72,5 @@ public class FacturaCabecera {
     }
 
     
-    
+
 }
