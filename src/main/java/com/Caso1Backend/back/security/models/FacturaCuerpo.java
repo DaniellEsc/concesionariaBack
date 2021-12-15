@@ -1,5 +1,7 @@
 package com.Caso1Backend.back.security.models;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -7,13 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name = "factura_cuerpo")
 public class FacturaCuerpo {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_cuerpo;
@@ -21,75 +24,121 @@ public class FacturaCuerpo {
     private int iva;
     private Double total;
 
-    @ManyToOne
+
     @JoinColumn(name = "id_factura")
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private FacturaCabecera facturaCabecera;
 
-    //(fetch = FetchType.LAZY)
+    @Column(name = "placa", nullable = false)
+	private String placa;
 
-    @ManyToOne
-    @JoinColumn(name = "placa")
+    //(fetch = FetchType.LAZY)
+    @JoinColumn(name = "placa", referencedColumnName = "placa",insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Vehiculo vehiculo;
+
+    
 
     public FacturaCuerpo() {
     }
 
-    public FacturaCuerpo(double subtotal, int iva, Double total, FacturaCabecera facturaCabecera, Vehiculo vehiculo) {
+
+
+    public FacturaCuerpo(int id_cuerpo, double subtotal, int iva, Double total, FacturaCabecera facturaCabecera,
+            String placa, Vehiculo vehiculo) {
+        this.id_cuerpo = id_cuerpo;
         this.subtotal = subtotal;
         this.iva = iva;
         this.total = total;
         this.facturaCabecera = facturaCabecera;
+        this.placa = placa;
         this.vehiculo = vehiculo;
     }
+
+
 
     public int getId_cuerpo() {
         return id_cuerpo;
     }
 
+
+
     public void setId_cuerpo(int id_cuerpo) {
         this.id_cuerpo = id_cuerpo;
     }
+
+
 
     public double getSubtotal() {
         return subtotal;
     }
 
+
+
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
+
+
 
     public int getIva() {
         return iva;
     }
 
+
+
     public void setIva(int iva) {
         this.iva = iva;
     }
+
+
 
     public Double getTotal() {
         return total;
     }
 
+
+
     public void setTotal(Double total) {
         this.total = total;
     }
+
+
 
     public FacturaCabecera getFacturaCabecera() {
         return facturaCabecera;
     }
 
+
+
     public void setFacturaCabecera(FacturaCabecera facturaCabecera) {
         this.facturaCabecera = facturaCabecera;
     }
+
+
+
+    public String getPlaca() {
+        return placa;
+    }
+
+
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+
 
     public Vehiculo getVehiculo() {
         return vehiculo;
     }
 
+
+
     public void setVehiculo(Vehiculo vehiculo) {
         this.vehiculo = vehiculo;
     }
-    
 
 
 

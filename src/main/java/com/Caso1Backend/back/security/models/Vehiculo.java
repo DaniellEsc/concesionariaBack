@@ -1,9 +1,16 @@
 package com.Caso1Backend.back.security.models;
 
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
@@ -27,6 +34,8 @@ public class Vehiculo {
     private String ramv;
     private String stock;
     private int garantia;
+
+    
 
     public Vehiculo(String placa, String modelo, String marca, String color, double precio, String descripcion_vehiculo, int numero_chasis, int numero_motor, Date anio_fabricacion, String ramv, String stock, int garantia) {
         this.placa = placa;
