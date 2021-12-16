@@ -2,6 +2,7 @@ package com.Caso1Backend.back.security.service;
 
 import java.util.List;
 
+import com.Caso1Backend.back.security.models.FacturaCabecera;
 import com.Caso1Backend.back.security.models.FacturaCuerpo;
 import com.Caso1Backend.back.security.repository.FacturaCuerpoRepository;
 
@@ -25,6 +26,10 @@ public class FacturaCuerpoService {
     public FacturaCuerpo registrar(FacturaCuerpo facturaCuerpo){
         return facturaCuerpoRepository.save(facturaCuerpo);
     }
+
+
+    //metodo ingreso de factura
+    
     
     
 }

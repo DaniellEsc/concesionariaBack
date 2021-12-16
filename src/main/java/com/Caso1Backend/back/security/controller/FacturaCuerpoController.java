@@ -3,7 +3,9 @@ package com.Caso1Backend.back.security.controller;
 import java.net.URI;
 import java.util.List;
 
+import com.Caso1Backend.back.security.models.FacturaCabecera;
 import com.Caso1Backend.back.security.models.FacturaCuerpo;
+import com.Caso1Backend.back.security.service.FacturaCabeceraService;
 import com.Caso1Backend.back.security.service.FacturaCuerpoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController()
 @RequestMapping("/facturacuerpo/")
 public class FacturaCuerpoController {
+
+    public int id_factura;
     
     @Autowired
     FacturaCuerpoService facturaCuerpoService;
+
+    @Autowired
+    FacturaCabeceraService facturaCabeceraService;
 
     @GetMapping()
     private ResponseEntity<List<FacturaCuerpo>> getAllCotizaciones(){
@@ -39,6 +46,7 @@ public class FacturaCuerpoController {
 
     @PostMapping("guardar/")
     public FacturaCuerpo guardar(@RequestBody FacturaCuerpo facturaCuerpo){
+    
         return facturaCuerpoService.registrar(facturaCuerpo);
     }
 }
